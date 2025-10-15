@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gallery | Raphae Tours | Travel Moments & Destinations</title>
+        <meta name="description" content="View our travel gallery — real moments, happy clients, and beautiful destinations from Raphae Tours journeys. Get inspired for your next adventure abroad.">
+        <meta name="keywords" content="Raphae Tours gallery, travel memories Nigeria, tour highlights, travel experience photos, customer travel stories, vacation photo gallery, Nigeria travel adventures, Raphae Tours trips, travel photo collection, destination snapshots, visa success stories, tourist experience Nigeria, study abroad journeys, travel photography Nigeria, travel success gallery, travel inspiration images, tour destinations photos, family trip highlights, Nigerian travelers abroad, travel lifestyle images, client travel experiences , travel photos, destination images, travel memories, tourism, migration success stories, travel experiences">
+        <meta property="og:title" content="Raphae Tours Gallery | Travel Memories & Destinations">
+        <meta property="og:description" content="Explore our photo gallery featuring beautiful destinations and successful travel experiences with Raphae Tours.">
+        <meta property="og:image" content="https://yourdomain.com/images/gallery-og.jpg">
+        <meta property="og:url" content="https://yourdomain.com/gallery.html">
+        <meta property="og:type" content="website">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Additional styles for gallery page */
+        .gallery-section {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo-section">
+               <div class="logo">
+                  <!--    <i class="fas fa-plane"></i>
+                </div>
+                <div class="brand-text">RaphaeTours</div> -->
+                <img src="./gallery/RT_half_Logo.jpg" alt="RaphaeTours" height="70" width="50">
+                </div>
+                <div class= "brand-textt"  ><h1><span   style="color:#0a72f6;"   >Raphae</span> <span style="color: #ff9900;" >Tours</span> </h1></div>
+           <img src="gallery/Untitled design.jpg" alt="swirl" height="80" width="100">
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="cta-button">Book Now</a>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Our Travel Gallery</h2>
+                <p class="section-subtitle">Discover stunning photos from Raphae Tours — capturing unforgettable travel moments, migration journeys, study abroad experiences, and adventure tours around the world.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Sample gallery items - replace with your actual images -->
+                <div class="gallery-item fade-in">
+                    <img src="gallery/4.png" alt="Raphae Tours Office" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Our Main Office</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="gallery/5.png" alt="Raphae Tours Logo" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Our Brand Identity</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="gallery/6.png" alt="Design Element" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Creative Elements</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="gallery/7.png" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/8.png" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/blackgirl.avif" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/blackgirleiffel.jfif" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/blackgirlgreece.webp" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/dubai-skylines-in-the-world.jpg" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/empolyment-based.webp" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/image.jpeg" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/mlk.jpg" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/ny skyline.webp" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/pentagon.webp" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/singapore-skyline.jpg" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="gallery/somekindafountain" alt="Design Concept" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Design Concepts</div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image">
+            <div class="lightbox-close"><i class="fas fa-times"></i></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RaphaeTours</h3>
+                <p>Your trusted partner for visa applications, work permits, and unforgettable travel experiences worldwide.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/19vDPT8qkm/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/raphaetours?t=NRt-NqCUAIwm1CmCebX4kA&s=09" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/raphaetours.ng?igsh=MWgwYmR6YXBkcGVnNw==" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/2348163295297" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Seidu Ajibowu, Ikeja, Lagos</p>
+                <p><i class="fas fa-phone"></i> +234 816 329 5297</p>
+                <p><i class="fas fa-envelope"></i> smiles@raphae.tech</p>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 - 17:00</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p><a href="services.html#global-talent">Global Talent Visa</a></p>
+                <p><a href="services.html#ebniw">EBNIW Program</a></p>
+                <p><a href="services.html#o1-visa">O-1 Visa</a></p>
+                <p><a href="services.html#green-card">Green Card</a></p>
+                <p><a href="services.html#work-permit">Work Permit</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Destinations</h3>
+                <p><a href="#">United States</a></p>
+                <p><a href="#">United Kingdom</a></p>
+                <p><a href="#">Canada</a></p>
+                <p><a href="#">Australia</a></p>
+                <p><a href="#">Europe</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 RaphaeTours. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.modern-header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#ffffff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Gallery lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.querySelector('.gallery-image').src;
+                lightboxImage.src = imgSrc;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
+

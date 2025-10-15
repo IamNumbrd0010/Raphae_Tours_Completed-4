@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Tour - Raphae Tours</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Additional styles for booking page */
+        .booking-section {
+            padding: 8rem 2rem 6rem;
+            background: var(--bg-light);
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .booking-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .booking-summary {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 120px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 114, 246, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: var(--text-light);
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .total-amount {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 800;
+        }
+
+        .service-option {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-option:hover {
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .service-option input[type="radio"] {
+            display: none;
+        }
+
+        .service-option.selected {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-title {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .service-price {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .booking-steps::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step {
+            background: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-light);
+            border: 2px solid #e0e0e0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .step-label {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0.5rem;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-summary {
+                position: static;
+                margin-top: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="./gallery/RT_half_Logo.jpg" alt="RaphaeTours" height="70" width="50">
+                </div>
+                <div class= "brand-textt"  ><h1><span   style="color:#0a72f6;"   >Raphae</span> <span style="color: #ff9900;" >Tours</span> </h1></div>
+           <img src="gallery/Untitled design.jpg" alt="swirl" height="80" width="100">
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="booking.html" class="cta-button active">Book Now</a>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Book Your Journey</h2>
+                <p class="section-subtitle">Select your service and complete your booking in simple steps</p>
+            </div>
+
+            <div class="booking-steps fade-in">
+                <div class="step active">
+                    1
+                    <span class="step-label">Service</span>
+                </div>
+                <div class="step">
+                    2
+                    <span class="step-label">Details</span>
+                </div>
+                <div class="step">
+                    3
+                    <span class="step-label">Payment</span>
+                </div>
+            </div>
+
+            <div class="booking-grid">
+                <div class="booking-form fade-in">
+                    <form id="bookingForm">
+                        <h3 style="margin-bottom: 2rem; color: var(--text-dark);">Select Your Service</h3>
+                        
+                        <div class="service-option" data-price="500">
+                            <input type="radio" name="service" id="global-talent" value="global-talent">
+                            <div class="service-header">
+                                <span class="service-title">Global Talent Visa</span>
+                                <span class="service-price">$500</span>
+                            </div>
+                            <p class="service-description">Expert guidance for Global Talent visa applications, helping skilled professionals migrate to their dream destinations.</p>
+                        </div>
+
+                        <div class="service-option" data-price="750">
+                            <input type="radio" name="service" id="ebniw" value="ebniw">
+                            <div class="service-header">
+                                <span class="service-title">EBNIW Program</span>
+                                <span class="service-price">$750</span>
+                            </div>
+                            <p class="service-description">Specialized assistance for Exceptional Benefit to National Interest Waiver applications and processing.</p>
+                        </div>
+
+                        <div class="service-option" data-price="1000">
+                            <input type="radio" name="service" id="o1-visa" value="o1-visa">
+                            <div class="service-header">
+                                <span class="service-title">O-1 Visa</span>
+                                <span class="service-price">$1,000</span>
+                            </div>
+                            <p class="service-description">Support for individuals with extraordinary abilities in arts, sciences, business, or athletics.</p>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <div class="form-row">
+                                <div>
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" class="form-control" required>
+                                </div>
+                                <div>
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div>
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                <div>
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Additional Requirements</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%;">Continue to Payment</button>
+                    </form>
+                </div>
+
+                <div class="booking-summary fade-in">
+                    <h3 style="margin-bottom: 2rem; color: var(--text-dark);">Booking Summary</h3>
+                    
+                    <div class="summary-item">
+                        <span class="summary-label">Selected Service</span>
+                        <span class="summary-value" id="selectedService">-</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span class="summary-label">Processing Time</span>
+                        <span class="summary-value">2-3 weeks</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span class="summary-label">Consultation</span>
+                        <span class="summary-value">Included</span>
+                    </div>
+
+                    <div class="summary-item" style="margin-top: 2rem;">
+                        <span class="summary-label">Total Amount</span>
+                        <span class="summary-value total-amount" id="totalAmount">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RaphaeTours</h3>
+                <p>Your trusted partner for visa applications, work permits, and unforgettable travel experiences worldwide.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/19vDPT8qkm/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/raphaetours?t=NRt-NqCUAIwm1CmCebX4kA&s=09" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/raphaetours.ng?igsh=MWgwYmR6YXBkcGVnNw==" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/2348163295297" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Seidu Ajibowu, Ikeja, Lagos</p>
+                <p><i class="fas fa-phone"></i> +234 816 329 5297</p>
+                <p><i class="fas fa-envelope"></i> smiles@raphae.tech</p>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 - 17:00</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p><a href="services.html#global-talent">Global Talent Visa</a></p>
+                <p><a href="services.html#ebniw">EBNIW Program</a></p>
+                <p><a href="services.html#o1-visa">O-1 Visa</a></p>
+                <p><a href="services.html#green-card">Green Card</a></p>
+                <p><a href="services.html#work-permit">Work Permit</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Destinations</h3>
+                <p><a href="#">United States</a></p>
+                <p><a href="#">United Kingdom</a></p>
+                <p><a href="#">Canada</a></p>
+                <p><a href="#">Australia</a></p>
+                <p><a href="#">Europe</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 RaphaeTours. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.modern-header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#ffffff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Service selection handling
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Update radio button
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+
+                // Update visual selection
+                document.querySelectorAll('.service-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+
+                // Update summary
+                const serviceName = this.querySelector('.service-title').textContent;
+                const servicePrice = this.getAttribute('data-price');
+                document.getElementById('selectedService').textContent = serviceName;
+                document.getElementById('totalAmount').textContent = `$${servicePrice}`;
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedService = document.querySelector('input[name="service"]:checked');
+            if (!selectedService) {
+                alert('Please select a service to continue.');
+                return;
+            }
+            // Add your form submission logic here
+            alert('Thank you for your booking. Our team will contact you shortly to proceed with the payment.');
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
